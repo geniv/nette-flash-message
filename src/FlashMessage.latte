@@ -1,0 +1,17 @@
+{snippet flashes}
+    {if $flashes}
+        {foreach $flashes as $flash}
+            <script>
+                swal({
+                    title: {$flash->message},
+                    // text: "Děkujeme za Váš zájem.",
+                    // "warning", "error", "success", "info"
+                    type: {$flash->type},
+                    // customClass: "nw-alert",
+                    // confirmButtonColor: "#eb7b00",
+                    // confirmButtonClass: "nw-alert-confirm"
+                });
+            </script>
+        {/foreach}
+    {/if}
+{/snippet}
