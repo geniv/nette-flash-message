@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use GeneralForm\ITemplatePath;
 use Nette\Localization\ITranslator;
 use Nette\Application\UI\Control;
 
@@ -9,12 +10,12 @@ use Nette\Application\UI\Control;
  *
  * @author  geniv
  */
-class FlashMessage extends Control
+class FlashMessage extends Control implements ITemplatePath
 {
-    /** @var string */
-    private $templatePath;
     /** @var ITranslator */
     private $translator;
+    /** @var string */
+    private $templatePath;
 
 
     /**
@@ -36,12 +37,10 @@ class FlashMessage extends Control
      * Set template path.
      *
      * @param string $path
-     * @return FlashMessage
      */
-    public function setTemplatePath(string $path): self
+    public function setTemplatePath(string $path)
     {
         $this->templatePath = $path;
-        return $this;
     }
 
 

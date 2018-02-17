@@ -2,6 +2,7 @@
 
 use GeneralForm\IEvent;
 use GeneralForm\IEventContainer;
+use Nette\SmartObject;
 
 
 /**
@@ -11,8 +12,27 @@ use GeneralForm\IEventContainer;
  */
 class AjaxFlashMessageEvent implements IEvent
 {
+    use SmartObject;
+
+    // define constant component names
     const
         COMPONENT_NAME = 'flashMessage';
+
+    /** @var string */
+    private $componentName, $fallBack;
+
+
+    /**
+     * AjaxFlashMessageEvent constructor.
+     *
+     * @param string $componentName
+     * @param string $fallBack
+     */
+    public function __construct(string $componentName = '', $fallBack = 'this')
+    {
+        $this->componentName = $componentName ?: self::COMPONENT_NAME;
+        $this->fallBack = $fallBack;
+    }
 
 
     /**
@@ -25,7 +45,7 @@ class AjaxFlashMessageEvent implements IEvent
     {
         $parent = $eventContainer->getComponent()->getParent();
         if ($parent) {
-            $parent[self::COMPONENT_NAME]->redraw();
+            $parent[$this->componentName]->redraw($this->fallBack);
         }
     }
 }
