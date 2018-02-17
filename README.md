@@ -25,9 +25,12 @@ neon configure:
 ...
     events:
         - AjaxFlashMessageEvent
+#        - AjaxFlashMessageEvent(otherNameComponent)
+#        - AjaxFlashMessageEvent(otherNameComponent, otherFallBack)
+```
 
-...
-
+neon configure services:
+```neon
 services:
     - FlashMessage
 ```
