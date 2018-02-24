@@ -14,7 +14,7 @@ class AjaxFlashMessageEvent implements IEvent
 {
     use SmartObject;
 
-    // define constant component names
+    // define constant component name
     const
         COMPONENT_NAME = 'flashMessage';
 
