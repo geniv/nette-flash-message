@@ -8,7 +8,7 @@ use Nette\Application\UI\Control;
 /**
  * Class FlashMessage
  *
- * @author  geniv
+ * @author  geniv, MartinFugess
  */
 class FlashMessage extends Control implements ITemplatePath
 {
