@@ -12,6 +12,11 @@ use Nette\Application\UI\Control;
  */
 class FlashMessage extends Control implements ITemplatePath
 {
+    // define path for direct use, without edit latte
+    const
+        SWAL_PATH = __DIR__ . '/FlashMessage.latte',
+        NETTE_PATH = __DIR__ . '/NetteFlashMessage.latte';
+
     /** @var ITranslator */
     private $translator;
     /** @var string */
@@ -29,7 +34,7 @@ class FlashMessage extends Control implements ITemplatePath
 
         $this->translator = $translator;
 
-        $this->templatePath = __DIR__ . '/FlashMessage.latte';   // set path
+        $this->templatePath = self::SWAL_PATH;   // set path
     }
 
 
