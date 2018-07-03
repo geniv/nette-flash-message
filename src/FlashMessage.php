@@ -14,13 +14,15 @@ class FlashMessage extends Control implements ITemplatePath
 {
     // define path for direct use, without edit latte
     const
-        SWAL_PATH = __DIR__ . '/FlashMessage.latte',
+        SWAL_PATH = __DIR__ . '/SwalFlashMessage.latte',
         NETTE_PATH = __DIR__ . '/NetteFlashMessage.latte';
 
     /** @var ITranslator */
     private $translator;
     /** @var string */
     private $templatePath;
+    /** @var array */
+    private $aliasType = [];
 
 
     /**
@@ -50,6 +52,17 @@ class FlashMessage extends Control implements ITemplatePath
 
 
     /**
+     * Set alias type.
+     *
+     * @param array $aliasType
+     */
+    public function setAliasType(array $aliasType)
+    {
+        $this->aliasType = $aliasType;
+    }
+
+
+    /**
      * Redraw.
      *
      * @param string $fallBack
@@ -72,7 +85,13 @@ class FlashMessage extends Control implements ITemplatePath
     {
         $template = $this->getTemplate();
 
-        $template->flashes = $this->parent->template->flashes;
+        $aliasType = $this->aliasType;
+        $flashes = array_map(function ($row) use ($aliasType) {
+            $row->type = $aliasType[$row->type] ?? $row->type;
+            return $row;
+        }, $this->parent->template->flashes);
+
+        $template->flashes = $flashes;
 
         $template->setTranslator($this->translator);
         $template->setFile($this->templatePath);
