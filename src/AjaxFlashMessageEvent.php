@@ -25,10 +25,10 @@ class AjaxFlashMessageEvent implements IEvent
     /**
      * AjaxFlashMessageEvent constructor.
      *
-     * @param string $componentName
-     * @param string $fallBack
+     * @param string|null $componentName
+     * @param string      $fallBack
      */
-    public function __construct(string $componentName = '', $fallBack = 'this')
+    public function __construct(string $componentName = null, $fallBack = 'this')
     {
         $this->componentName = $componentName ?: self::COMPONENT_NAME;
         $this->fallBack = $fallBack;

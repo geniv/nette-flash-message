@@ -23,10 +23,10 @@ Include in application
 neon configure:
 ```neon
 ...
-    events:
-        - AjaxFlashMessageEvent
-#        - AjaxFlashMessageEvent(otherNameComponent)
-#        - AjaxFlashMessageEvent(otherNameComponent, otherFallBack)
+events:
+    - AjaxFlashMessageEvent
+#    - AjaxFlashMessageEvent(otherNameComponent)
+#    - AjaxFlashMessageEvent(otherNameComponent, otherFallBack)
 ```
 
 neon configure services:
@@ -40,9 +40,12 @@ usage:
 protected function createComponentFlashMessage(FlashMessage $flashMessage)
 {
     // $flashMessage->setTemplatePath(__DIR__ . '/templates/FlashMessage.latte');
+    // $flashMessage->setAliasType(['danger' => 'error',]);
     return $flashMessage;
 }
 ```
+
+for method `setTemplatePath()` is possible use predefined latte: `FlashMessage::SWAL_PATH` or `FlashMessage::NETTE_PATH`
 
 usage:
 ```latte
