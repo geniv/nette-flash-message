@@ -45,6 +45,13 @@ protected function createComponentFlashMessage(FlashMessage $flashMessage)
 }
 ```
 
+call in callback:
+```php
+$this['flashMessage']->redraw();
+
+$this['flashMessage']->redraw($fallBack = 'this');
+```
+
 for method `setTemplatePath()` is possible use predefined latte: `FlashMessage::SWAL_PATH` or `FlashMessage::NETTE_PATH`
 
 usage:
