@@ -1,5 +1,5 @@
-    <div n:snippet="flashes" n:if="$flashes">
-        <script n:foreach="$flashes as $flash">
+    <div n:snippet="flashes">
+        <script n:if="$flashes" n:inner-foreach="$flashes as $flash">
             swal({
                 title: {$flash->message},
                 // text: "Děkujeme za Váš zájem.",
