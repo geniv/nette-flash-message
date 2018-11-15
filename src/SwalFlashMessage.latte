@@ -1,13 +1,27 @@
     <div n:snippet="flashes">
         <script n:if="$flashes" n:inner-foreach="$flashes as $flash">
-            swal({
-                title: {$flash->message},
-                // text: "Děkujeme za Váš zájem.",
-                // "warning", "error", "success", "info"
-                type: {$flash->type},
-                // customClass: "nw-alert",
-                // confirmButtonColor: "#eb7b00",
-                // confirmButtonClass: "nw-alert-confirm"
-            });
+            {if $iterator->first}
+            var toast = swal.mixin({
+                toast: true,
+                position: 'top',
+                {if count($flashes)<=1}
+                timer: 7000,
+                showConfirmButton: false,
+                customClass: "prevent-default",
+                {else}
+                padding: "15px",
+                progressSteps: {range(1, count($flashes))},
+                buttonsStyling: false,
+                confirmButtonClass: "btn-swal2 btn-swal2-ok",
+                {/if}
+            }).queue([
+                {/if}
+                {
+                    title: {$flash->message},
+                    type: {$flash->type}
+                },
+                {if $iterator->last}
+            ]);
+            {/if}
         </script>
     </div>
