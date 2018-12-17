@@ -8,14 +8,14 @@ $ composer require geniv/nette-flash-message
 ```
 or
 ```json
-"geniv/nette-flash-message": ">=1.0.0"
+"geniv/nette-flash-message": "^1.0"
 ```
 
 require:
 ```json
-"php": ">=7.0.0",
-"nette/nette": ">=2.4.0",
-"geniv/nette-general-form": ">=1.0.0"
+"php": ">=7.0",
+"nette/nette": ">=2.4",
+"geniv/nette-general-form": ">=1.0"
 ```
 
 Include in application
@@ -37,7 +37,7 @@ services:
 
 usage:
 ```php
-protected function createComponentFlashMessage(FlashMessage $flashMessage)
+protected function createComponentFlashMessage(IFlashMessage $flashMessage): IFlashMessage
 {
     // $flashMessage->setTemplatePath(__DIR__ . '/templates/FlashMessage.latte');
     // $flashMessage->setAliasType(['danger' => 'error',]);
