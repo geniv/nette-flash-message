@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-use GeneralForm\ITemplatePath;
 use Nette\Localization\ITranslator;
 use Nette\Application\UI\Control;
 
@@ -10,7 +9,7 @@ use Nette\Application\UI\Control;
  *
  * @author  geniv, MartinFugess
  */
-class FlashMessage extends Control implements ITemplatePath
+class FlashMessage extends Control implements IFlashMessage
 {
     // define path for direct use, without edit latte
     const
@@ -68,7 +67,7 @@ class FlashMessage extends Control implements ITemplatePath
      * @param string $fallBack
      * @throws \Nette\Application\AbortException
      */
-    public function redraw($fallBack = 'this')
+    public function redraw(string $fallBack = 'this')
     {
         if ($this->presenter->isAjax()) {
             $this->redrawControl('flashes');
